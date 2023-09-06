@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="text/css" href="styles.css" rel="stylesheet">
-        <title>Calculadora</title>
+        <title>Calculadora JS</title>
     </head>
     <body onload="init();">
         <table class="calculadora">
@@ -12,19 +12,34 @@
                 <td colspan="5"><span id="resultado"></span></td>
             </tr>
             <tr>
-                <td><button id="reset">C</button></td><td><button id="radicacion">√2</button></td><td><button id="potencia">^</button></td><td><button id="division">/</button></td>
+                <td><button class="operador" id="reset">C</button></td>
+                <td><button id="radicacion" class="operador">√2</button></td>
+                <td><button id="potencia" class="operador">^</button></td>
+                <td><button id="division" class="operador">/</button></td>
             </tr>
             <tr>
-                <td><button id="siete">7</button></td><td><button id="ocho">8</button></td><td><button id="nueve">9</button></td><td><button id="multiplicacion">*</button></td>
+                <td><button id="siete">7</button></td>
+                <td><button id="ocho">8</button></td>
+                <td><button id="nueve">9</button></td>
+                <td><button id="multiplicacion" class="operador">*</button></td>
             </tr>
             <tr>
-                <td><button id="cuatro">4</button></td><td><button id="cinco">5</button></td><td><button id="seis">6</button></td><td><button id="suma">+</button></td>
+                <td><button id="cuatro">4</button></td>
+                <td><button id="cinco">5</button></td>
+                <td><button id="seis">6</button></td>
+                <td><button id="suma" class="operador">+</button></td>
             </tr>
             <tr>
-                <td><button id="uno">1</button></td><td><button id="dos">2</button></td><td><button id="tres">3</button></td><td><button id="resta">-</button></td>
+                <td><button id="uno">1</button></td>
+                <td><button id="dos">2</button></td>
+                <td><button id="tres">3</button></td>
+                <td><button id="resta" class="operador">-</button></td>
             </tr>
             <tr>
-                <td><button id="igual">=</button></td><td><button id="cero">0</button></td></td><td><button id="punto">.</button></td><td><button id="signo">+/-</button></td>
+                <td><button id="signo" class="operador">+/-</button></td>
+                <td><button id="cero">0</button></td>
+                <td><button id="punto">.</button></td>
+                <td><button id="igual" class="operador">=</button></td>
             </tr>
             
         </table>
