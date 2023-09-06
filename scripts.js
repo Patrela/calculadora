@@ -118,58 +118,75 @@ function resetear(){
 }
 
 function resolver(){
-    var res = 0;
-    switch(operacion){
-      case "+":
-        res = parseFloat(operandoa) + parseFloat(operandob);
+  var res = 0;
+  switch(operacion){
+    case "+":
+      res = parseFloat(operandoa) + parseFloat(operandob);
+      break;
+    case "-":
+        res = parseFloat(operandoa) - parseFloat(operandob);
         break;
-      case "-":
-          res = parseFloat(operandoa) - parseFloat(operandob);
+    case "*":
+      res = parseFloat(operandoa) * parseFloat(operandob);
+      break;
+    case "/":
+      res = parseFloat(operandoa) / parseFloat(operandob);
+      break;
+    case "+/-":
+      if (operandoa) {
+          res = - parseFloat(operandoa);
           break;
-      case "*":
-        res = parseFloat(operandoa) * parseFloat(operandob);
-        break;
-      case "/":
-        res = parseFloat(operandoa) / parseFloat(operandob);
-        break;
-      case "+/-":
-        if (operandoa) {
-           res = - parseFloat(operandoa);
-           break;
-        } else {
-           res = - parseFloat(operandob);
-           break;
-        }   
-      //case ".":
-        //res = (parseFloat(operandoa).toString + '.' + parseFloat(operandoa).toString);
-        //break;
-      case "√2":
-          res = Math.sqrt(parseFloat(operandoa));
-         
-          break;  
-      case "^":
-        switch (operandob) {
-          case "0":
-            res = (parseFloat(operandoa) * 0 ) + 1;
-            break;
-          case "1":
-            res = parseFloat(operandoa) * 1 ;
-            break;
-          case "2":
-            res = parseFloat(operandoa) * parseFloat(operandoa);
-            break;
-          case "3":
-            res = parseFloat(operandoa) * parseFloat(operandoa) * parseFloat(operandoa);
-            break;
-          case "4":
-            res = parseFloat(operandoa) * parseFloat(operandoa) * parseFloat(operandoa) * parseFloat(operandoa);
-            break;
-          case "5":
-            res = parseFloat(operandoa) * parseFloat(operandoa) * parseFloat(operandoa)  * parseFloat(operandoa) * parseFloat(operandoa);
-            break;
-        }
-       break;
-    }
- resetear();
- resultado.textContent = res;
+      } else {
+          res = - parseFloat(operandob);
+          break;
+      }   
+    //case ".":
+      //res = (parseFloat(operandoa).toString + '.' + parseFloat(operandoa).toString);
+      //break;
+    case "√2":
+        res = Math.sqrt(parseFloat(operandoa));
+        
+        break;  
+    case "^":
+      switch (operandob) {
+        case "0":
+          res = (parseFloat(operandoa) * 0 ) + 1;
+          break;
+        case "1":
+          res = parseFloat(operandoa) * 1 ;
+          break;
+        case "2":
+          res = parseFloat(operandoa) * parseFloat(operandoa);
+          break;
+        case "3":
+          res = parseFloat(operandoa) * parseFloat(operandoa) * parseFloat(operandoa);
+          break;
+        case "4":
+          res = parseFloat(operandoa) * parseFloat(operandoa) * parseFloat(operandoa) * parseFloat(operandoa);
+          break;
+        case "5":
+          res = parseFloat(operandoa) * parseFloat(operandoa) * parseFloat(operandoa)  * parseFloat(operandoa) * parseFloat(operandoa);
+          break;
+      }
+      break;
+  }
+  resetear();
+
+  resultado.textContent = limitarPantalla(res);
+}
+
+function limitarPantalla(res) {
+  var cad = res.toString();
+  var decimalPart = (cad.indexOf(".")== -1) ? cad.indexOf(",") : cad.indexOf(".");
+  if( decimalPart != -1 ) {
+    console.log("res " + cad + "\n " );
+     cad = cad.substring(decimalPart+1, cad.length);
+     console.log("dec. " + cad + "\n " );
+     cad = (cad.length>8 )?cad.substring(0,8) : cad;
+     console.log("round. " + cad + "\n " );
+     console.log("int " + res.toString().substring(0, decimalPart) );
+     cad = res.toString().substring(0, decimalPart+1) + cad;
+     cad= (cad.length > 12 )? cad.substring(0,12) : cad;
+  }
+  return cad;
 }
